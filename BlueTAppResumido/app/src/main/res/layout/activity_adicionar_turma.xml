@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/ll_turma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_nome_turma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:padding="5dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="Nome" />
+
+            <EditText
+                android:id="@+id/et_nome_turma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:hint="Insira o nome da turma"
+                android:layout_below="@id/tv_nome_turma"/>
+
+            <TextView
+                android:id="@+id/tv_nome_arquivo_csv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:padding="5dp"
+                android:text="Arquivo CSV"
+                android:layout_below="@id/et_nome_turma"/>
+
+            <EditText
+                android:id="@+id/et_nome_arquivo_csv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:hint="Insira o nome do arquivo CSV"
+                android:layout_below="@id/tv_nome_arquivo_csv"/>
+
+            <TextView
+                android:id="@+id/tv_carga_horaria_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:padding="5dp"
+                android:text="Carga Horária"
+                android:layout_below="@id/et_nome_arquivo_csv"/>
+
+            <EditText
+                android:id="@+id/et_carga_horaria_total"
+                android:layout_width="67dp"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:layout_below="@id/tv_carga_horaria_total"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/ll_turma">
+
+            <Button
+                android:id="@+id/bt_criar_turma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Criar Turma"
+                android:layout_below="@id/et_carga_horaria_total" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

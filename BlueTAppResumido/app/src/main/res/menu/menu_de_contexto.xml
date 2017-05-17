@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android" >
+        <item
+            android:id="@+id/menu_chamada_bluetooh"
+            android:title="@string/texto_chamada_bluetooh" />
+        <item
+            android:id="@+id/menu_chamada_manual"
+            android:title="@string/texto_chamada_manual" />
+        <item
+            android:id="@+id/menu_inserir_aluno"
+            android:title="@string/texto_inserir_aluno" />
+        <item
+            android:id="@+id/menu_remover_aluno"
+            android:title="@string/texto_remover_aluno" />
+        <item
+            android:id="@+id/menu_remover_turma"
+            android:title="@string/texto_remover_turma" />
+        <item
+            android:id="@+id/menu_ver_registro_de_chamadas"
+            android:title="@string/texto_ver_registro_de_chamadas" />
+        <item
+            android:id="@+id/menu_exportar"
+            android:title="@string/texto_exportar" />
+</menu>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_nome_aluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:padding="5dp"
+            android:text="Nome" />
+
+        <EditText
+            android:id="@+id/et_nome_aluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:hint="Insira o nome do aluno" />
+
+        <TextView
+            android:id="@+id/tv_matricula_aluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:padding="5dp"
+            android:text="Matricula" />
+
+        <EditText
+            android:id="@+id/et_matricula_aluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:singleLine="true"
+            android:hint="Insira a matricula do aluno" />
+
+        <TextView
+            android:id="@+id/tv_curso_aluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:padding="5dp"
+            android:text="Curso" />
+
+        <EditText
+            android:id="@+id/et_curso_aluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:hint="Insira o nome do curso" />
+
+        <TextView
+            android:id="@+id/tv_email_aluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:padding="5dp"
+            android:text="Email" />
+
+        <EditText
+            android:id="@+id/et_email_aluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:hint="Insira o email do aluno" />
+
+        <Button
+            android:id="@+id/bt_inserir_aluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_inserir_aluno" />
+    </LinearLayout>
+</ScrollView>

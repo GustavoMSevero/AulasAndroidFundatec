@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BlueTApp Resumido</string>
+
+    <!-- Variaveis do arquivo menu_contexto -->
+    <string name="texto_chamada_bluetooh">Chamada por Bluetooh</string>
+    <string name="texto_chamada_manual">Chamada Manual</string>
+    <string name="texto_inserir_aluno">Inserir Aluno</string>
+    <string name="texto_remover_aluno">Remover Aluno</string>
+    <string name="texto_remover_turma">Remover Turma</string>
+    <string name="texto_remover_todas_turmas">Remover todas as turmas</string>
+    <string name="texto_ver_registro_de_chamadas">Registros de Chamada</string>
+    <string name="texto_exportar">Exportar</string>
+
+    <!-- Variaveis do arquivo dialog_ementa_carga_horaria -->
+    <string name="texto_ementa">Por favor, digite o assunto da aula de hoje</string>
+    <string name="texto_carga_horaria">Por favor, digite a carga horaria referente a esta chamada</string>
+
+</resources>

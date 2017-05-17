@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/tv_item_nome_aluno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:text="Nome: " />
+
+    <TextView
+        android:id="@+id/tv_item_matricula_aluno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:text="Matricula: "
+        android:layout_below="@id/tv_item_nome_aluno" />
+
+    <TextView
+        android:id="@+id/tv_item_curso_aluno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:text="Curso: "
+        android:layout_below="@id/tv_item_matricula_aluno" />
+
+    <TextView
+        android:id="@+id/tv_item_email_aluno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:text="Email: "
+        android:layout_below="@id/tv_item_curso_aluno" />
+
+    <TextView
+        android:id="@+id/tv_item_faltas_aluno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:text="Faltas: "
+        android:layout_below="@id/tv_item_email_aluno" />
+
+    <TextView
+        android:id="@+id/tv_informacoes_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:text="TextView"
+        android:layout_alignBottom="@+id/tv_item_nome_aluno"
+        android:layout_toRightOf="@+id/tv_item_nome_aluno"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/tv_informacoes_matricula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:text="TextView"
+        android:layout_alignBottom="@+id/tv_item_matricula_aluno"
+        android:layout_toRightOf="@+id/tv_item_matricula_aluno"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/tv_informacoes_curso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:text="TextView"
+        android:layout_alignBottom="@+id/tv_item_curso_aluno"
+        android:layout_toRightOf="@+id/tv_item_curso_aluno"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/tv_informacoes_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:text="TextView"
+        android:layout_alignBottom="@+id/tv_item_email_aluno"
+        android:layout_toRightOf="@+id/tv_item_email_aluno"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/tv_informacoes_faltas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:text="TextView"
+        android:layout_alignBottom="@+id/tv_item_faltas_aluno"
+        android:layout_toRightOf="@+id/tv_item_faltas_aluno"
+        android:singleLine="true" />
+
+</RelativeLayout>
