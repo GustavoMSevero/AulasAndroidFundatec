@@ -1,4 +1,4 @@
-package br.org.fundatec.gradleapp;
+package br.org.fundatec.poatransporteapp;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,15 +9,20 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.squareup.picasso.Picasso;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,44 +31,45 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                
-                lerTempoPortoAlegre();
-            }
-        });
+        lerTransportePortoAlegre();
 
-        ImageView image = (ImageView) findViewById(R.id.image);
-
-        //Picasso é usado quando queremos pegar uma imagem externa
-        Picasso
-                .with(this)
-                .load("https://images5.alphacoders.com/523/523395.jpg")
-                .into( image );
+        ListView list = (ListView) findViewById(R.id.lista);
 
     }
 
-    private void lerTempoPortoAlegre() {
+    private void lerTransportePortoAlegre(){
+        final ArrayList<TransportePortoAlegre> tpa = new ArrayList<>();
         RequestQueue vq = Volley.newRequestQueue(this);
-        GsonRequest<MetroClima[]> request = new GsonRequest<>("https://metroclimaestacoes.procempa.com.br" +
-                "/metroclima/seam/resource/rest/externalRest/ultimaLeitura", MetroClima[].class, null, new Response.Listener<MetroClima[]>() {
+        GsonRequest<TransportePortoAlegre[]> request = new GsonRequest<>("http://www.poatransporte.com.br/php/facades/process.php?"+
+                "a=nc&p=%&t=o", TransportePortoAlegre[].class, null, new Response.Listener<TransportePortoAlegre[]>() {
             @Override
-            public void onResponse(MetroClima[] response) {
-                Log.i("METROCLIMA", response.toString());
+            public void onResponse(TransportePortoAlegre[] response) {
+                Log.i("TRANSPORTEPORTOALEGRE", response.toString());
+                for (int i = 0; i < response.length; i++){
+                    TransportePortoAlegre temp = new TransportePortoAlegre();
+                    temp.id = response[i].id;
+                    temp.codigo = response[i].codigo;
+                    temp.nome = response[i].nome;
+                    tpa.add(temp);
+                }
+
+                ArrayAdapter<TransportePortoAlegre> adapter = new ArrayAdapter<TransportePortoAlegre>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, tpa);
+
+                list = ((ListView)findViewById(R.id.lista));
+                list.setAdapter(adapter);
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("METROCLIMA", error.getMessage());
+                Log.e("TRANSPORTEPORTOALEGRE", error.getMessage());
             }
         });
 
         vq.add(request);
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
