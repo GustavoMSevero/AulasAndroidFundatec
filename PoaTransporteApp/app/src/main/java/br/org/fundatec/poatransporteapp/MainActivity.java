@@ -1,5 +1,6 @@
 package br.org.fundatec.poatransporteapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,8 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -35,6 +38,18 @@ public class MainActivity extends AppCompatActivity {
 
         ListView list = (ListView) findViewById(R.id.lista);
 
+        //Abre a view do item selecionado
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TransportePortoAlegre linha = ((ArrayAdapter<TransportePortoAlegre>)parent.getAdapter()).getItem( position );
+                //Toast.makeText(MainActivity.this, linha.nome,Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                intent.putExtra("LINHAID", linha.id);
+                startActivity( intent );
+            }
+        });
+
     }
 
     private void lerTransportePortoAlegre(){
@@ -53,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     tpa.add(temp);
                 }
 
+                //Adapter carrega os dados na tela
                 ArrayAdapter<TransportePortoAlegre> adapter = new ArrayAdapter<TransportePortoAlegre>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, tpa);
 
                 list = ((ListView)findViewById(R.id.lista));

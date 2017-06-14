@@ -36,38 +36,18 @@ public class ItinerarioActivity extends AppCompatActivity {
 
         listview = (ListView) findViewById(R.id.listaItinerario);
         mVolleyQueue = Volley.newRequestQueue(this);
-        getItinerario();
 
-//        ListView listIti = (ListView) findViewById(R.id.listaItinerario);
+        if ( getIntent().hasExtra("LINHAID") ){
+            String id = getIntent().getStringExtra("LINHAID");
+            getItinerario( id );
 
-//        final ArrayList<ItinerarioPojo> it = new ArrayList<>();
-//        RequestQueue vq = Volley.newRequestQueue(this);
-//        GsonRequest<ItinerarioPojo> request = new GsonRequest<>("http://www.poatransporte.com.br/php/facades/process.php?a=il&p=5487\n" +
-//                "\n", ItinerarioPojo.class, null, new Response.Listener<ItinerarioPojo>() {
-//
-//            public void onResponse(ItinerarioPojo response) {
-//                Log.i("ITINERARIOPORTOALEGRE", response.toString());
-//
-//                it.add(response);
-//
-//                ArrayAdapter<ItinerarioPojo> adapter = new ArrayAdapter<ItinerarioPojo>(ItinerarioActivity.this, android.R.layout.simple_expandable_list_item_1, it);
-//
-//                listIti = ((ListView) findViewById(R.id.listaItinerario));
-//                listIti.setAdapter(adapter);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.e("ITINERARIOPORTOALEGRE", error.getMessage());
-//            }
-//        });
-//
-//        vq.add(request);
+        }
+
     }
 
-    private void getItinerario(){
+    private void getItinerario(String id){
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                "http://www.poatransporte.com.br/php/facades/process.php?a=il&p=5487" ,
+                "http://www.poatransporte.com.br/php/facades/process.php?a=il&p=" + id ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -87,6 +67,7 @@ public class ItinerarioActivity extends AppCompatActivity {
         });
 
         mVolleyQueue.add(stringRequest);
+
     }
 
     private Itinerario parse(String response) {

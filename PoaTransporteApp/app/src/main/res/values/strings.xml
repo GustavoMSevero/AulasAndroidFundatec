@@ -2,4 +2,5 @@
     <string name="app_name">PoaTransporteApp</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_itinerario">ItinerarioActivity</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

@@ -17,8 +17,8 @@ public class Itinerario  {
 
     public static class LatLng{
 
-        private Double lat;
-        private Double lng;
+        public Double lat;
+        public Double lng;
 
         public LatLng(Double lat, Double lng) {
             this.lat = lat;
@@ -26,7 +26,9 @@ public class Itinerario  {
         }
 
         public String toString(){
-            return "Lat "+ lat+"\nLon "+lng;
+
+            //return "Lat "+ lat+"\nLon "+lng;
+            return  lat.toString()+ "\n " +lng.toString();
         }
 
     }

@@ -16,7 +16,8 @@ public String codigo;
 public String nome;
 
     public String toString(){
-        String dados = "id: "+id+"\nCódigo: "+codigo+"\nNome: "+nome;
+        //String dados = "id: "+id+"\nCódigo: "+codigo+"\nNome: "+nome;
+        String dados = codigo+"   "+nome;
         return dados;
     }
 
