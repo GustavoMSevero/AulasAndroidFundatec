@@ -9,8 +9,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
+
+    private RequestQueue mVolleyQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +39,30 @@ public class MainActivity extends AppCompatActivity {
                 startActivity( new Intent( MainActivity.this, AddMusicActivity.class ));
             }
         });
+        
+        mVolleyQueue = Volley.newRequestQueue(this);
+    }
+
+    public void lerMusicas(){
+        StringRequest req = new StringRequest("https://fundatecti09.firebaseio.com/musicas.json",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject( response );
+                            //for (JSONObject object : jsonObject.)
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, "Erro", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mVolleyQueue.add( req );
     }
 
 
