@@ -27,6 +27,8 @@ public class AddMusicActivity extends AppCompatActivity {
     private RequestQueue mVolleyRequest;
     private EditText mEditMusic;
     private EditText mEditNome;
+    private Boolean edit = false;
+    private Music music;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,15 @@ public class AddMusicActivity extends AppCompatActivity {
 
         mEditMusic = (EditText)findViewById(R.id.edtmusic);
         mEditNome = (EditText)findViewById(R.id.edtname);
+
+        if ( getIntent().hasExtra("key") ){
+            edit = true;
+            music = new Music( getIntent().getStringExtra("user"),
+                    getIntent().getStringExtra("title"),
+                    getIntent().getStringExtra("key") );
+            mEditMusic.setText(music.getTitle());
+            mEditNome.setText(music.getUser());
+        }
     }
 
     @Override
@@ -66,8 +77,9 @@ public class AddMusicActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            if (edit)editaMusica();
+            else enviaMusica();
 
-           enviaMusica();
             return true;
 
         }
@@ -84,6 +96,67 @@ public class AddMusicActivity extends AppCompatActivity {
             //"https://fundatecti09.firebase-demo.com/";
             JsonObjectRequest json = new JsonObjectRequest(Request.Method.POST,
                     "https://fundatecti09.firebaseio.com/musicas.json", obj,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            finish();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(AddMusicActivity.this, "Tente novamente", Toast.LENGTH_SHORT).show();
+                }
+            }
+            );
+
+            mVolleyRequest.add( json );
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void editaMusica() {
+        try {
+            JSONObject obj = new JSONObject();
+            obj.put("music", mEditMusic.getText().toString());
+            obj.put("user",  mEditNome.getText().toString());
+
+            //"https://fundatecti09.firebase-demo.com/";
+            JsonObjectRequest json = new JsonObjectRequest(Request.Method.PATCH,
+                    "https://fundatecti09.firebaseio.com/musicas/"+music.getId()+".json", obj,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            finish();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(AddMusicActivity.this, "Tente novamente", Toast.LENGTH_SHORT).show();
+                }
+            }
+            );
+
+            mVolleyRequest.add( json );
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public void deletaMusica() {
+        try {
+            JSONObject obj = new JSONObject();
+            obj.put("music", mEditMusic.getText().toString());
+            obj.put("user",  mEditNome.getText().toString());
+
+            //"https://fundatecti09.firebase-demo.com/";
+            JsonObjectRequest json = new JsonObjectRequest(Request.Method.PATCH,
+                    "https://fundatecti09.firebaseio.com/musicas/"+music.getId()+".json", obj,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
