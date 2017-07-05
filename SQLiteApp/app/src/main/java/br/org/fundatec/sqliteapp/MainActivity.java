@@ -3,12 +3,12 @@ package br.org.fundatec.sqliteapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -36,8 +36,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         bd = new BDLite(this);
-        Person person = new Person(0L, "Gustavo Severo", "M", "01/08/1976");
-        bd.insertPerson( person );
+        //Person person = new Person(0L, "Gustavo Severo", "M", "01/08/1976");
+        //bd.insertPerson( person );
+        list = (ListView)findViewById(R.id.listaPessoas);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Para pegar o id do item, pessoa.
+                Person person = ((ArrayAdapter<Person>)parent.getAdapter()).getItem(position);
+                Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+                intent.putExtra("id", person.getId());
+                startActivity( intent );
+            }
+        });
 
     }
 
@@ -46,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         ArrayList<Person> people = bd.getAllPerson();
-        list = (ListView)findViewById(R.id.listaPessoas);
+
         ArrayAdapter<Person> adapter = new ArrayAdapter<Person>(this, android.R.layout.simple_list_item_1, people);
         list.setAdapter( adapter );
 
